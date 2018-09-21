@@ -40,12 +40,13 @@ class Game {
         }
     }
 
-    private get currentPlayer(): Player {
+    public get currentPlayer(): Player {
         return this.players[this.currentPlayerIndex]
     }
 
     private incrementPlayerIndex() {
-        this.currentPlayerIndex += 1
+        const next = (this.currentPlayerIndex += 1)
+        this.currentPlayerIndex = next % this.players.length
     }
 }
 

@@ -154,4 +154,46 @@ describe('Game', () => {
             )
         })
     })
+
+    describe('currentPlayer', () => {
+        let game: Game
+        let anna: Player
+        let bree: Player
+        let cara: Player
+
+        beforeEach(() => {
+            const board = [0, 1, 2, 3, 4, 5]
+
+            anna = new Player('Anna')
+            bree = new Player('Bree')
+            cara = new Player('Cara')
+
+            game = new Game(board)
+            game.addPlayer(anna)
+            game.addPlayer(bree)
+            game.addPlayer(cara)
+
+            game.start()
+        })
+
+        it('exists', () => {
+            assert(game.currentPlayer)
+        })
+
+        it('has value of first added player', () => {
+            assert.equal(game.currentPlayer, anna)
+        })
+
+        it('changes to next player after move', () => {
+            game.move(anna, 1)
+            assert.equal(game.currentPlayer, bree)
+        })
+
+        it('loops back to the first player after all players have moved', () => {
+            game.move(anna, 1)
+            game.move(bree, 1)
+            game.move(cara, 1)
+            assert.equal(game.currentPlayer, anna)
+        })
+    })
 })
