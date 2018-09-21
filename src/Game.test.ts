@@ -50,4 +50,31 @@ describe('Game', () => {
             assert.throws(() => game.addPlayer(harris), /Cannot exceed maximum number of players/)
         })
     })
+
+    describe('start()', () => {
+        let game: Game
+
+        beforeEach(() => {
+            const board = [0, 1, 2, 3, 4, 5]
+            game = new Game(board)
+        })
+
+        it('exists', () => {
+            assert(game.start)
+        })
+
+        it('throws error if attempting to start without adding two or more players', () => {
+            const pam = new Player('Pam')
+            game.addPlayer(pam)
+            assert.throws(() => game.start(), /More players required to start game/)
+        })
+
+        it('succeeds if more than two players', () => {
+            const ahmed = new Player('Ahmed')
+            const bruno = new Player('Bruno')
+            game.addPlayer(ahmed)
+            game.addPlayer(bruno)
+            game.start()
+        })
+    })
 })

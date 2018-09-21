@@ -16,6 +16,12 @@ class Game {
         }
         this.players.push(player)
     }
+
+    public start() {
+        if (this.players.length < 2) {
+            throw new Error('More players required to start game')
+        }
+    }
 }
 
 export default Game
