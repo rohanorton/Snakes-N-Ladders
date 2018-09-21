@@ -196,4 +196,34 @@ describe('Game', () => {
             assert.equal(game.currentPlayer, anna)
         })
     })
+
+    describe('winner', () => {
+        let game: Game
+        let ellie: Player
+        let xanthe: Player
+
+        beforeEach(() => {
+            const board = [0, 1, 2]
+
+            ellie = new Player('Ellie')
+            xanthe = new Player('Xanthe')
+
+            game = new Game(board)
+            game.addPlayer(ellie)
+            game.addPlayer(xanthe)
+
+            game.start()
+        })
+
+        it('is undefined if no winnner', () => {
+            game.move(ellie, 1)
+            game.move(xanthe, 1)
+            assert.equal(game.winner, undefined)
+        })
+
+        it('contains winner after they reach end of game', () => {
+            game.move(ellie, 2)
+            assert.equal(game.winner, ellie)
+        })
+    })
 })

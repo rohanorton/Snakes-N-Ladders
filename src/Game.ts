@@ -44,6 +44,10 @@ class Game {
         return this.players[this.currentPlayerIndex]
     }
 
+    public get winner(): Player | undefined {
+        return this.players.find(player => player.position === this.board[this.board.length - 1])
+    }
+
     private incrementPlayerIndex() {
         const next = (this.currentPlayerIndex += 1)
         this.currentPlayerIndex = next % this.players.length
