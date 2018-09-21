@@ -24,7 +24,7 @@ class InplayState implements IGameState {
         assert(distance >= DICE_MIN, `Distance must be bigger than ${DICE_MIN}`)
         assert(distance <= DICE_MAX, `Distance must be smaller than ${DICE_MAX}`)
 
-        const newPosition = this.game.board[player.position + distance]
+        const newPosition = this.game.board.getPosition(player.position + distance)
         if (newPosition) {
             player.position = newPosition
         }
@@ -43,9 +43,7 @@ class InplayState implements IGameState {
     }
 
     public get winner(): Player | undefined {
-        return this.game.players.find(
-            player => player.position === this.game.board[this.game.board.length - 1]
-        )
+        return this.game.players.find(player => player.position === this.game.board.last)
     }
 
     private incrementPlayerIndex() {

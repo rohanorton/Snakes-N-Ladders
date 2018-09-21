@@ -1,11 +1,10 @@
 import Player from './Player'
+import Board from './Board'
 import assert from 'assert'
 import IGameState from './GameState/IGameState'
 import NotStartedState from './GameState/NotStartedState'
 import InplayState from './GameState/InplayState'
 import GameOverState from './GameState/GameOverState'
-
-type Board = Array<number>
 
 class Game {
     readonly DICE_MIN = 1
@@ -15,9 +14,12 @@ class Game {
 
     private state: IGameState = new NotStartedState(this)
 
+    public board: Board
     public players: Array<Player> = []
 
-    constructor(public board: Board) {}
+    constructor(board: Array<number>) {
+        this.board = new Board(board)
+    }
 
     public setStarted() {
         this.state = new InplayState(this)
