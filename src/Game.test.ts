@@ -76,6 +76,14 @@ describe('Game', () => {
             game.addPlayer(bruno)
             game.start()
         })
+
+        it('should not be possible to move before start called', () => {
+            const bilal = new Player('Bilal')
+            const gabriel = new Player('Gabriel')
+            game.addPlayer(bilal)
+            game.addPlayer(gabriel)
+            assert.throws(() => game.move(bilal, 1), /Cannot move: game not started/)
+        })
     })
 
     describe('move()', () => {
@@ -194,6 +202,11 @@ describe('Game', () => {
             game.move(bree, 1)
             game.move(cara, 1)
             assert.equal(game.currentPlayer, anna)
+        })
+
+        it('should be undefined if game over', () => {
+            game.move(anna, 5)
+            assert.equal(game.currentPlayer, undefined)
         })
     })
 
