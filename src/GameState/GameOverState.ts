@@ -9,6 +9,13 @@ class GameOverState implements IGameState {
         throw new Error('Cannot add more players: game over')
     }
 
+    public removePlayer(player: Player) {
+        const index = this.game.players.indexOf(player)
+        if (index > -1) {
+            this.game.players.splice(index, 1)
+        }
+    }
+
     public start() {
         // TODO: should restart game?
     }

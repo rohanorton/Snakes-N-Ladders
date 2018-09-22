@@ -33,6 +33,10 @@ class Game {
         this.state.addPlayer(player)
     }
 
+    public removePlayer(player: Player) {
+        this.state.removePlayer(player)
+    }
+
     public start() {
         this.state.start()
     }
@@ -47,6 +51,10 @@ class Game {
 
     public get winner(): Player | undefined {
         return this.state.winner
+    }
+
+    public get hasPlayers(): boolean {
+        return this.players.length > 0
     }
 }
 

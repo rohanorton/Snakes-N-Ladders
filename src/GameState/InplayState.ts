@@ -12,6 +12,19 @@ class InplayState implements IGameState {
         throw new Error('Cannot add player: game in play')
     }
 
+    public removePlayer(player: Player) {
+        const index = this.game.players.indexOf(player)
+        if (index > -1) {
+            this.game.players.splice(index, 1)
+        }
+        // If all but one player leaves the game, the final player is by
+        // default the winner
+        if (this.game.players.length === 1) {
+            const winner = this.game.players[0]
+            this.game.setWinner(winner)
+        }
+    }
+
     public start() {
         throw new Error('Cannot start game: game in play')
     }

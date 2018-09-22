@@ -51,6 +51,50 @@ describe('Game', () => {
         })
     })
 
+    describe('removePlayer()', () => {
+        let game: Game
+        let terri: Player
+        let luigi: Player
+        let yvette: Player
+        let julia: Player
+
+        beforeEach(() => {
+            terri = new Player('Terri')
+            luigi = new Player('Luigi')
+            yvette = new Player('Yvette')
+            julia = new Player('Julia')
+
+            const board = [0, 1, 2, 3, 4, 5]
+            game = new Game(board)
+
+            game.addPlayer(terri)
+            game.addPlayer(luigi)
+            game.addPlayer(yvette)
+        })
+
+        it('exists', () => {
+            assert(game.removePlayer)
+        })
+
+        it('removes player ', () => {
+            game.removePlayer(luigi)
+            assert.deepEqual(game.players, [terri, yvette])
+        })
+
+        it('does nothing if player not present', () => {
+            game.removePlayer(julia)
+            assert.deepEqual(game.players, [terri, luigi, yvette])
+        })
+
+        it('will make last player winner if game inplay', () => {
+            game.start()
+
+            game.removePlayer(luigi)
+            game.removePlayer(terri)
+            assert.equal(game.winner, yvette)
+        })
+    })
+
     describe('start()', () => {
         let game: Game
 

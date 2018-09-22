@@ -15,6 +15,13 @@ class NotStartedState implements IGameState {
         this.game.players.push(player)
     }
 
+    public removePlayer(player: Player) {
+        const index = this.game.players.indexOf(player)
+        if (index > -1) {
+            this.game.players.splice(index, 1)
+        }
+    }
+
     public start() {
         const { MIN_PLAYERS } = this.game
 
