@@ -22,6 +22,10 @@ class Game {
     }
 
     public setStarted() {
+        // Ensure all players start from the beginning
+        this.players.forEach(player => {
+            player.position = 0
+        })
         this.state = new InplayState(this)
     }
 

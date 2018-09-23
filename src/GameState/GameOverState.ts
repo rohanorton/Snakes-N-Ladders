@@ -17,7 +17,7 @@ class GameOverState implements IGameState {
     }
 
     public start() {
-        // TODO: should restart game?
+        this.game.setStarted()
     }
 
     public move(player: Player, distance: number) {

@@ -128,6 +128,29 @@ describe('Game', () => {
             game.addPlayer(gabriel)
             assert.throws(() => game.move(bilal, 1), /Cannot move: game not started/)
         })
+
+        it('should reset players positions after gameover', () => {
+            const siobhan = new Player('Siobhan')
+            const lois = new Player('Lois')
+            const gilles = new Player('Gilles')
+
+            game.addPlayer(siobhan)
+            game.addPlayer(lois)
+            game.addPlayer(gilles)
+
+            game.start()
+
+            game.move(siobhan, 4)
+            game.move(lois, 4)
+            game.move(gilles, 5)
+            // Sanity check
+            assert.equal(game.winner, gilles)
+
+            game.start()
+            assert.equal(siobhan.position, 0)
+            assert.equal(lois.position, 0)
+            assert.equal(gilles.position, 0)
+        })
     })
 
     describe('move()', () => {
