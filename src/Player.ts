@@ -1,5 +1,5 @@
 class Player {
-    public position = 0
+    public position = 1
     constructor(public readonly name: string) {}
 }
 

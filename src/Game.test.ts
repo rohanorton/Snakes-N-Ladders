@@ -1,5 +1,6 @@
 import assert from 'assert'
 import Game from './Game'
+import Board from './Board'
 import Player from './Player'
 
 describe('Game', () => {
@@ -8,7 +9,7 @@ describe('Game', () => {
     })
 
     it('can be constructed when passed a board', () => {
-        const board = [0, 1, 2, 3, 4, 5]
+        const board = new Board(6)
         new Game(board)
     })
 
@@ -16,7 +17,7 @@ describe('Game', () => {
         let game: Game
 
         beforeEach(() => {
-            const board = [0, 1, 2, 3, 4, 5]
+            const board = new Board(6)
             game = new Game(board)
         })
 
@@ -64,7 +65,7 @@ describe('Game', () => {
             yvette = new Player('Yvette')
             julia = new Player('Julia')
 
-            const board = [0, 1, 2, 3, 4, 5]
+            const board = new Board(6)
             game = new Game(board)
 
             game.addPlayer(terri)
@@ -99,7 +100,7 @@ describe('Game', () => {
         let game: Game
 
         beforeEach(() => {
-            const board = [0, 1, 2, 3, 4, 5]
+            const board = new Board(6)
             game = new Game(board)
         })
 
@@ -147,9 +148,9 @@ describe('Game', () => {
             assert.equal(game.winner, gilles)
 
             game.start()
-            assert.equal(siobhan.position, 0)
-            assert.equal(lois.position, 0)
-            assert.equal(gilles.position, 0)
+            assert.equal(siobhan.position, 1)
+            assert.equal(lois.position, 1)
+            assert.equal(gilles.position, 1)
         })
     })
 
@@ -160,7 +161,9 @@ describe('Game', () => {
         let chris: Player
 
         beforeEach(() => {
-            const board = [0, 1, 5, 3, 4, 5, 3, 7]
+            const board = new Board(8)
+            board.addLadder(2, 5)
+            board.addSnake(6, 3)
 
             adam = new Player('Adam')
             barb = new Player('Barb')
@@ -195,7 +198,7 @@ describe('Game', () => {
 
         it('sets player position', () => {
             game.move(adam, 4)
-            assert.equal(adam.position, 4, 'Adam should have moved 4 squares forward')
+            assert.equal(adam.position, 5, 'Adam should have moved 4 squares forward from square 1')
         })
 
         it('gives extra turn if player rolls a 6', () => {
@@ -210,22 +213,22 @@ describe('Game', () => {
             // change starting position
             adam.position = 4
             game.move(adam, 3)
-            assert.equal(adam.position, 7, 'Adam should have moved 2 squares forward')
+            assert.equal(adam.position, 7, 'Adam should have moved 3 squares forward from square 4')
         })
 
         it('should not allow player to overshoot end of the board', () => {
             // change starting position
             adam.position = 5
-            game.move(adam, 3)
-            assert.equal(adam.position, 5, 'Adam should not have moved')
+            game.move(adam, 4)
+            assert.equal(adam.position, 5, 'Adam should not have moved from square 5')
         })
 
         it('should take player up a ladder', () => {
-            game.move(adam, 2)
+            game.move(adam, 1)
             assert.equal(
                 adam.position,
                 5,
-                'Adam should have moved 2 squares forwawrd and up a ladder to square 5'
+                'Adam should have moved 1 square forwawrd and up a ladder to square 5'
             )
         })
     })
@@ -237,7 +240,7 @@ describe('Game', () => {
         let cara: Player
 
         beforeEach(() => {
-            const board = [0, 1, 2, 3, 4, 5]
+            const board = new Board(6)
 
             anna = new Player('Anna')
             bree = new Player('Bree')
@@ -283,7 +286,7 @@ describe('Game', () => {
         let xanthe: Player
 
         beforeEach(() => {
-            const board = [0, 1, 2]
+            const board = new Board(3)
 
             ellie = new Player('Ellie')
             xanthe = new Player('Xanthe')

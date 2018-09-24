@@ -14,17 +14,14 @@ class Game {
 
     private state: IGameState = new NotStartedState(this)
 
-    public board: Board
     public players: Array<Player> = []
 
-    constructor(board: Array<number>) {
-        this.board = new Board(board)
-    }
+    constructor(public board: Board) {}
 
     public setStarted() {
         // Ensure all players start from the beginning
         this.players.forEach(player => {
-            player.position = 0
+            player.position = 1
         })
         this.state = new InplayState(this)
     }

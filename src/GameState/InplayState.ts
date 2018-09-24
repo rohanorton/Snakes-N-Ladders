@@ -17,6 +17,10 @@ class InplayState implements IGameState {
         if (index > -1) {
             this.game.players.splice(index, 1)
         }
+        this.setWinnerIfFinalPlayer()
+    }
+
+    private setWinnerIfFinalPlayer() {
         // If all but one player leaves the game, the final player is by
         // default the winner
         if (this.game.players.length === 1) {
