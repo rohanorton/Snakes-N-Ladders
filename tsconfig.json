@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
-        "target": "es2017",
+        "target": "es5",
+        "lib": ["es6", "es7", "dom"],
         "module": "commonjs",
-        "outDir": "./lib",
+        "outDir": "./dist/",
+        "sourceMap": true,
         "strict": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "jsx": "react"
     },
     "include": ["src/**/*"],
-    "exclude": ["node_modules", "lib", "src/**/*.test.ts"]
+    "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
 }
