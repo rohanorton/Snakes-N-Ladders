@@ -1,15 +1,31 @@
 {
     "scripts": {
-        "build": "tsc",
+        "build": "webpack --config webpack.config.js",
         "test": "jest",
         "testing": "jest --watch"
     },
     "devDependencies": {
         "@types/jest": "^23.3.2",
+        "@types/lodash": "^4.14.116",
         "@types/node": "^10.10.1",
+        "@types/react": "^16.4.14",
+        "@types/react-dom": "^16.0.7",
+        "awesome-typescript-loader": "^5.2.1",
         "espower-typescript": "^9.0.1",
         "jest": "^23.6.0",
+        "source-map-loader": "^0.2.4",
         "ts-jest": "^23.10.1",
-        "typescript": "^3.0.3"
+        "typescript": "^3.0.3",
+        "webpack": "^4.19.1",
+        "webpack-cli": "^3.1.1",
+        "webpack-dev-server": "^3.1.8"
+    },
+    "dependencies": {
+        "lodash": "^4.17.11",
+        "mobx": "^5.1.2",
+        "mobx-react": "^5.2.8",
+        "mobx-state-tree": "^3.4.0",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2"
     }
 }

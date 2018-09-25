@@ -3,6 +3,10 @@ import Game from '../Game'
 import IGameState from './IGameState'
 import assert from 'assert'
 
+interface Foo {
+    foo(): void
+}
+
 class NotStartedState implements IGameState {
     constructor(private game: Game) {}
 

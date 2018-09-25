@@ -1,6 +1,5 @@
 import Player from './Player'
 import Board from './Board'
-import assert from 'assert'
 import IGameState from './GameState/IGameState'
 import NotStartedState from './GameState/NotStartedState'
 import InplayState from './GameState/InplayState'
