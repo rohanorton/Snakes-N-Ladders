@@ -50,24 +50,43 @@ const SnakesAndLadders = () => {
 
 export const Board = observer(({ store }: IProps) => {
     return (
-        <div className="board-container">
-            <div className="board">
-                {board.map(i => (
-                    <div
-                        key={i.toString()}
-                        className={`tile ${i % 2 !== 0 ? 'tile-odd' : 'tile-even'}`}
-                    >
-                        {i}
-                        <div className="counter-container">
-                            {store.players
-                                .filter(player => player.position === i)
-                                .map((player, i, playersOnSquare) => (
-                                    <Counter key={player.id} player={player} />
-                                ))}
+        <div>
+            {store.isStarted || (
+                <h2 className="code-heading">
+                    Get friends to join by using this code:<br />
+                    {store.gameId}
+                </h2>
+            )}
+            <div className="button-bar">
+                {store.isStarted ? (
+                    <button hidden={!store.yourTurn} onClick={store.move}>
+                        Move
+                    </button>
+                ) : (
+                    <button hidden={store.players.length < 2} onClick={store.start}>
+                        Start
+                    </button>
+                )}
+            </div>
+            <div className="board-container">
+                <div className="board">
+                    {board.map(i => (
+                        <div
+                            key={i.toString()}
+                            className={`tile ${i % 2 !== 0 ? 'tile-odd' : 'tile-even'}`}
+                        >
+                            {i}
+                            <div className="counter-container">
+                                {store.players
+                                    .filter(player => player.position === i)
+                                    .map((player, i, playersOnSquare) => (
+                                        <Counter key={player.id} player={player} />
+                                    ))}
+                            </div>
                         </div>
-                    </div>
-                ))}
-                <SnakesAndLadders />
+                    ))}
+                    <SnakesAndLadders />
+                </div>
             </div>
         </div>
     )
