@@ -1,5 +1,7 @@
 # Snakes-n-Ladders
 
+![Snakes and Ladders](/screenshot.png)
+
 ## What is it?
 
 A multiplayer snake and ladders game. It uses a centralised game server that
