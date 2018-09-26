@@ -21,11 +21,13 @@
         "webpack-dev-server": "^3.1.8"
     },
     "dependencies": {
+        "@types/socket.io-client": "^1.4.32",
         "lodash": "^4.17.11",
         "mobx": "^5.1.2",
         "mobx-react": "^5.2.8",
         "mobx-state-tree": "^3.4.0",
         "react": "^16.5.2",
-        "react-dom": "^16.5.2"
+        "react-dom": "^16.5.2",
+        "socket.io-client": "^2.1.1"
     }
 }

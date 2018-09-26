@@ -1,0 +1,32 @@
+{
+    "scripts": {
+        "start": "node ./lib",
+        "build": "tsc",
+        "test": "jest",
+        "testing": "jest --watch",
+        "watch-server": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/index.ts"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.4",
+        "@types/express": "^4.16.0",
+        "@types/jest": "^23.3.2",
+        "@types/lodash": "^4.14.116",
+        "@types/node": "^10.10.1",
+        "@types/socket.io": "^1.4.38",
+        "@types/uuid": "^3.4.4",
+        "espower-typescript": "^9.0.1",
+        "jest": "^23.6.0",
+        "nodemon": "^1.18.4",
+        "ts-jest": "^23.10.1",
+        "ts-node": "^7.0.1",
+        "typescript": "^3.0.3"
+    },
+    "dependencies": {
+        "cors": "^2.8.4",
+        "express": "^4.16.3",
+        "io-ts": "^1.3.0",
+        "rxjs": "^6.3.3",
+        "socket.io": "^2.1.1",
+        "uuid": "^3.3.2"
+    }
+}
