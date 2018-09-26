@@ -5,22 +5,28 @@ services:
     build: ./client/
     volumes:
       - ./client:/client:rw
+      - client_dist:/client/dist
       - client_node_modules:/client/node_modules
-  # server:
-  #   build: ./server/
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./server:/server:rw
-  #     - server_node_modules:/server/node_modules
+  server:
+    build: ./server/
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./server:/server:rw
+      - server_lib:/server/lib
+      - server_node_modules:/server/node_modules
+    command: npm start
   nginx:
     image: nginx
     ports:
       - "8080:80"
     volumes:
       - ./client:/usr/share/nginx/html:ro
+      - client_dist:/usr/share/nginx/html/dist
       - client_node_modules:/usr/share/nginx/html/node_modules:ro
 
 volumes:
+  client_dist:
   client_node_modules:
-  # server_node_modules:
+  server_lib:
+  server_node_modules:
