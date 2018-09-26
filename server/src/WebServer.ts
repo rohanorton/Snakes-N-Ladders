@@ -6,7 +6,7 @@ import cors from 'cors'
 class WebServer {
     public app: express.Application
     private server: Server
-    private socketHandler : SocketHandler
+    private socketHandler: SocketHandler
 
     constructor(readonly port: number = 4000) {
         this.app = express()
@@ -18,7 +18,7 @@ class WebServer {
 
     public listen() {
         this.server.listen(this.port, () => {
-            console.log(`Listening on port ${this.port}`)
+            console.log(`Listening`)
         })
     }
 }

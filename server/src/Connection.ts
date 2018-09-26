@@ -31,7 +31,6 @@ class Connection {
         })
 
         socket.on('command', (msg: any) => {
-            console.log(msg)
             try {
                 const decoded = Command.decode(msg)
                 if (!this.gameId) {
@@ -42,7 +41,6 @@ class Connection {
                 decoded.map(cmd => this.gameServer.handleCommand(this.clientId, gameId, cmd))
 
                 if (decoded.isLeft()) {
-                    console.log('Unknown command:', msg)
                     throw new Error(`Unknown command ${msg}`)
                 }
             } catch (err) {
@@ -62,12 +60,10 @@ class Connection {
 
     private handleGame(game: GameInstance) {
         this.gameId = game.id
-        // Just to be on the safe-side, unsubscribe from any existing subscriptions
         if (this.subscription) {
             this.subscription.unsubscribe()
         }
         this.subscription = game.events.subscribe(ev => {
-            console.log('Event:', ev)
             this.socket.emit('event', ev)
         })
     }

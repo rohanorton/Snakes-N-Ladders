@@ -66,9 +66,7 @@ export const Game = types
 
         started(player: IPlayer) {
             self.currentPlayer = player.name
-            console.log('current player set:', self.currentPlayer)
             self.isStarted = true
-            console.log('is started set:', self.isStarted)
         },
 
         gameWon(player: IPlayer) {
