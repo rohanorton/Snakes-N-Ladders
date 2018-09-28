@@ -66,7 +66,7 @@ that I could easily rectify.
 
 ## A Quick Note on Assets
 
-I should note that I made used some SVG assets from the following pen:
+I made use of some SVG assets from the following codepen:
 
 https://codepen.io/alvaromontoro/pen/gjWPNW
 
